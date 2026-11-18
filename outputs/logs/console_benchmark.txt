@@ -1,0 +1,9 @@
+teacher_resnet50           top1  82.93 (onnx  82.96) | 23.705M   94.74MB | ORT t1   19.11ms t4   5.98ms | torch t1   32.61ms | mem  222.2MB |     197 img/s (73s)
+baseline_mobilenetv2       top1  75.27 (onnx  75.25) |  2.352M    9.38MB | ORT t1    1.79ms t4   0.79ms | torch t1    4.30ms | mem   32.2MB |    1445 img/s (35s)
+baseline_squeezenet        top1  72.88 (onnx  72.86) |  0.777M    3.11MB | ORT t1    1.05ms t4   0.46ms | torch t1    2.27ms | mem   15.2MB |    1843 img/s (18s)
+baseline_efficientnet_lite0 top1  76.12 (onnx  76.11) |  3.499M   13.95MB | ORT t1    2.03ms t4   0.76ms | torch t1    4.89ms | mem   42.1MB |    1257 img/s (31s)
+kd_mobilenetv2             top1  78.79 (onnx  78.76) |  2.352M    9.38MB | ORT t1    1.56ms t4   0.82ms | torch t1    4.30ms | mem   32.2MB |    1486 img/s (13s)
+kd_squeezenet              top1  76.00 (onnx  76.01) |  0.777M    3.11MB | ORT t1    1.05ms t4   0.39ms | torch t1    2.27ms | mem   14.8MB |    1897 img/s (10s)
+kd_efficientnet_lite0      top1  79.65 (onnx  79.64) |  3.499M   13.95MB | ORT t1    2.01ms t4   0.77ms | torch t1    5.09ms | mem   42.2MB |    1261 img/s (14s)
+nas_best                   top1  92.49 (onnx  92.50) |  0.288M    1.15MB | ORT t1    0.89ms t4   0.34ms | torch t1    1.76ms | mem    9.0MB |    2981 img/s (18s)
+saved D:\Uni\SEM 7\Edge\Assignment\4\A4_Submission\outputs\results\benchmark.csv

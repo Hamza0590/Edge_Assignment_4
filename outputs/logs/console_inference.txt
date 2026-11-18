@@ -1,0 +1,63 @@
+
+=== teacher_resnet50  [onnx]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: road (99.9%), train (0.0%), spider (0.0%)
+  OK #    1 true=forest         pred: forest (100.0%), pine_tree (0.0%), willow_tree (0.0%)
+  OK #    2 true=seal           pred: seal (79.4%), otter (19.0%), beaver (1.0%)
+  OK #    3 true=mushroom       pred: mushroom (100.0%), trout (0.0%), train (0.0%)
+  OK #    4 true=sea            pred: sea (100.0%), cloud (0.0%), plain (0.0%)
+
+=== baseline_mobilenetv2  [onnx]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: road (82.2%), girl (10.1%), train (2.4%)
+  OK #    1 true=forest         pred: forest (38.8%), elephant (24.6%), bottle (18.6%)
+  OK #    2 true=seal           pred: seal (71.6%), otter (9.0%), lizard (6.6%)
+  OK #    3 true=mushroom       pred: mushroom (100.0%), house (0.0%), dinosaur (0.0%)
+  OK #    4 true=sea            pred: sea (99.9%), cloud (0.0%), plain (0.0%)
+
+=== baseline_squeezenet  [onnx]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: train (46.4%), road (32.4%), bridge (15.5%)
+  OK #    1 true=forest         pred: forest (44.0%), table (42.9%), tiger (7.0%)
+  XX #    2 true=seal           pred: otter (87.9%), seal (8.1%), beaver (3.1%)
+  OK #    3 true=mushroom       pred: mushroom (97.6%), house (1.3%), trout (0.5%)
+  OK #    4 true=sea            pred: sea (99.5%), cloud (0.5%), plain (0.1%)
+
+=== baseline_efficientnet_lite0  [onnx]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: road (98.9%), girl (0.5%), palm_tree (0.1%)
+  OK #    1 true=forest         pred: forest (93.6%), bottle (5.0%), tiger (0.4%)
+  OK #    2 true=seal           pred: seal (83.9%), otter (13.4%), lizard (1.0%)
+  OK #    3 true=mushroom       pred: mushroom (100.0%), house (0.0%), table (0.0%)
+  OK #    4 true=sea            pred: sea (98.9%), cloud (1.1%), plain (0.0%)
+
+=== kd_mobilenetv2  [onnx]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: road (96.1%), rocket (3.4%), bridge (0.2%)
+  OK #    1 true=forest         pred: forest (100.0%), willow_tree (0.0%), table (0.0%)
+  OK #    2 true=seal           pred: seal (80.0%), otter (18.1%), crocodile (1.3%)
+  OK #    3 true=mushroom       pred: mushroom (100.0%), house (0.0%), lizard (0.0%)
+  OK #    4 true=sea            pred: sea (100.0%), cloud (0.0%), plain (0.0%)
+
+=== kd_squeezenet  [onnx]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: road (99.9%), otter (0.1%), train (0.0%)
+  OK #    1 true=forest         pred: forest (100.0%), squirrel (0.0%), table (0.0%)
+  OK #    2 true=seal           pred: seal (97.5%), otter (1.0%), crocodile (0.5%)
+  OK #    3 true=mushroom       pred: mushroom (100.0%), trout (0.0%), lizard (0.0%)
+  OK #    4 true=sea            pred: sea (100.0%), cloud (0.0%), plain (0.0%)
+
+=== kd_efficientnet_lite0  [onnx]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: road (99.9%), girl (0.0%), train (0.0%)
+  OK #    1 true=forest         pred: forest (99.9%), squirrel (0.1%), bottle (0.0%)
+  OK #    2 true=seal           pred: seal (77.0%), otter (23.0%), dolphin (0.0%)
+  OK #    3 true=mushroom       pred: mushroom (100.0%), house (0.0%), forest (0.0%)
+  OK #    4 true=sea            pred: sea (100.0%), cloud (0.0%), plain (0.0%)
+
+=== nas_best  [onnx]  dataset=cifar10  input=24x24
+  OK #    0 true=cat            pred: cat (100.0%), dog (0.0%), frog (0.0%)
+  OK #    1 true=ship           pred: ship (100.0%), automobile (0.0%), airplane (0.0%)
+  OK #    2 true=ship           pred: ship (100.0%), automobile (0.0%), airplane (0.0%)
+  OK #    3 true=airplane       pred: airplane (99.9%), ship (0.1%), bird (0.0%)
+  OK #    4 true=frog           pred: frog (100.0%), bird (0.0%), automobile (0.0%)
+
+=== kd_efficientnet_lite0  [torch]  dataset=cifar100  input=32x32
+  XX #    0 true=mountain       pred: road (99.9%), girl (0.0%), train (0.0%)
+  OK #    1 true=forest         pred: forest (99.9%), squirrel (0.1%), bottle (0.0%)
+  OK #    2 true=seal           pred: seal (77.0%), otter (23.0%), dolphin (0.0%)
+  OK #    3 true=mushroom       pred: mushroom (100.0%), house (0.0%), forest (0.0%)
+  OK #    4 true=sea            pred: sea (100.0%), cloud (0.0%), plain (0.0%)

@@ -1,0 +1,12 @@
+$ python deploy/onnx_infer.py --onnx outputs/onnx/kd_mobilenetv2.onnx --dataset cifar100 --evaluate
+model outputs/onnx/kd_mobilenetv2.onnx | input input ['batch', 3, 32, 32] | providers ['CPUExecutionProvider']
+  test accuracy 78.76% on 10000 images | inference 8.39s (1192 img/s, 4 threads, batch 256)
+$ python deploy/onnx_infer.py --onnx outputs/onnx/kd_squeezenet.onnx --dataset cifar100 --evaluate
+model outputs/onnx/kd_squeezenet.onnx | input input ['batch', 3, 32, 32] | providers ['CPUExecutionProvider']
+  test accuracy 76.01% on 10000 images | inference 6.65s (1504 img/s, 4 threads, batch 256)
+$ python deploy/onnx_infer.py --onnx outputs/onnx/kd_efficientnet_lite0.onnx --dataset cifar100 --evaluate
+model outputs/onnx/kd_efficientnet_lite0.onnx | input input ['batch', 3, 32, 32] | providers ['CPUExecutionProvider']
+  test accuracy 79.64% on 10000 images | inference 9.04s (1107 img/s, 4 threads, batch 256)
+$ python deploy/onnx_infer.py --onnx outputs/onnx/nas_best.onnx --dataset cifar10 --evaluate
+model outputs/onnx/nas_best.onnx | input input ['batch', 3, 24, 24] | providers ['CPUExecutionProvider']
+  test accuracy 92.48% on 10000 images | inference 5.04s (1982 img/s, 4 threads, batch 256)

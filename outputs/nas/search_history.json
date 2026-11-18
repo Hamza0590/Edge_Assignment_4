@@ -1,0 +1,4829 @@
+[
+  {
+    "id": 0,
+    "iteration": 0,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s16|2x48k5dwsep-silu|2x48k7conv-hswish|1x64k7dwsep-relu6",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 48,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        },
+        {
+          "depth": 2,
+          "channels": 48,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 64,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 256554,
+    "params_m": 0.256554,
+    "state_dict_mb": 1.052009,
+    "onnx_size_mb": 1.031103,
+    "ort_latency_ms": 1.1761499918065965,
+    "ort_latency_p90_ms": 1.2184800172690302,
+    "torch_cpu_latency_ms": 1.4805500395596027,
+    "peak_mem_mb": 9.494528,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 76.96,
+    "fitness": 77.523597046823,
+    "train_time_s": 44.16986012458801
+  },
+  {
+    "id": 1,
+    "iteration": 1,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s32|1x32k5mbconv-relu|2x96k5mbconv-relu6|3x160k5mbconv-hswish",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 96,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 3,
+          "channels": 160,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 719402,
+    "params_m": 0.719402,
+    "state_dict_mb": 2.962827,
+    "onnx_size_mb": 2.852411,
+    "ort_latency_ms": 0.9085999918170273,
+    "ort_latency_p90_ms": 1.0060000058729202,
+    "torch_cpu_latency_ms": 2.024749992415309,
+    "peak_mem_mb": 13.221888,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 2.85>2.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 2,
+    "iteration": 1,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s16|1x48k7mbconv-relu|3x96k5conv-hswish",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 48,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 2,
+    "total_blocks": 4,
+    "params": 612282,
+    "params_m": 0.612282,
+    "state_dict_mb": 2.471565,
+    "onnx_size_mb": 2.449882,
+    "ort_latency_ms": 3.846600011456758,
+    "ort_latency_p90_ms": 4.260390013223514,
+    "torch_cpu_latency_ms": 4.137799987802282,
+    "peak_mem_mb": 13.25056,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 3.85>1.5ms;size 2.45>2.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 3,
+    "iteration": 1,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s16|3x24k3conv-silu|1x32k5mbconv-silu|1x128k7dwsep-relu|3x192k7conv-hswish",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 24,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 192,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 8,
+    "params": 4898922,
+    "params_m": 4.898922,
+    "state_dict_mb": 19.632371,
+    "onnx_size_mb": 19.597129,
+    "ort_latency_ms": 0.9558500023558736,
+    "ort_latency_p90_ms": 1.1170599900651723,
+    "torch_cpu_latency_ms": 5.2140000043436885,
+    "peak_mem_mb": 66.699264,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 19.60>2.0MB;mem 66.7>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 4,
+    "iteration": 1,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s32|2x32k7conv-hswish|1x48k3conv-hswish|2x64k3mbconv-relu6",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 48,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 2,
+          "channels": 64,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 195146,
+    "params_m": 0.195146,
+    "state_dict_mb": 0.814487,
+    "onnx_size_mb": 0.780067,
+    "ort_latency_ms": 1.021349977236241,
+    "ort_latency_p90_ms": 1.088599965441972,
+    "torch_cpu_latency_ms": 1.4305500080808997,
+    "peak_mem_mb": 8.86784,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 68.98,
+    "fitness": 69.77995584417205,
+    "train_time_s": 29.682299613952637
+  },
+  {
+    "id": 5,
+    "iteration": 2,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s16|3x48k7mbconv-hswish|3x48k3mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 6,
+    "params": 143898,
+    "params_m": 0.143898,
+    "state_dict_mb": 0.636811,
+    "onnx_size_mb": 0.56979,
+    "ort_latency_ms": 1.20524998055771,
+    "ort_latency_p90_ms": 1.2534799927379936,
+    "torch_cpu_latency_ms": 2.0226999768055975,
+    "peak_mem_mb": 9.613312,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 75.84,
+    "fitness": 76.33940103319496,
+    "train_time_s": 88.85377645492554
+  },
+  {
+    "id": 6,
+    "iteration": 3,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s24|2x32k3dwsep-relu|2x64k3conv-relu|3x128k3mbconv-relu6|2x160k5dwsep-relu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 64,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 2,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 486026,
+    "params_m": 0.486026,
+    "state_dict_mb": 2.019583,
+    "onnx_size_mb": 1.930815,
+    "ort_latency_ms": 0.7591999892611057,
+    "ort_latency_p90_ms": 0.7800799969118088,
+    "torch_cpu_latency_ms": 1.978499989490956,
+    "peak_mem_mb": 10.829824,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.18,
+    "fitness": 80.81417604956641,
+    "train_time_s": 57.694262742996216
+  },
+  {
+    "id": 7,
+    "iteration": 4,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s32|1x16k7mbconv-relu|1x32k7conv-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 2,
+    "params": 50314,
+    "params_m": 0.050314,
+    "state_dict_mb": 0.218609,
+    "onnx_size_mb": 0.201628,
+    "ort_latency_ms": 0.23040000814944506,
+    "ort_latency_p90_ms": 0.2954200026579202,
+    "torch_cpu_latency_ms": 0.5437500076368451,
+    "peak_mem_mb": 7.76192,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 67.4,
+    "fitness": 71.29649164040471,
+    "train_time_s": 28.894484996795654
+  },
+  {
+    "id": 8,
+    "iteration": 5,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s24|1x16k7conv-relu6|1x32k5conv-relu|3x64k7dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 70658,
+    "params_m": 0.070658,
+    "state_dict_mb": 0.308905,
+    "onnx_size_mb": 0.285517,
+    "ort_latency_ms": 0.29659998835995793,
+    "ort_latency_p90_ms": 0.3111299825832248,
+    "torch_cpu_latency_ms": 0.7526000263169408,
+    "peak_mem_mb": 7.45472,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 68.94,
+    "fitness": 72.37505103123254,
+    "train_time_s": 27.260688066482544
+  },
+  {
+    "id": 9,
+    "iteration": 6,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s16|1x32k5dwsep-relu6|1x96k3mbconv-relu|3x160k3dwsep-hswish",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 160,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 135850,
+    "params_m": 0.13585,
+    "state_dict_mb": 0.582579,
+    "onnx_size_mb": 0.542588,
+    "ort_latency_ms": 0.1543500111438334,
+    "ort_latency_p90_ms": 0.2062499988824129,
+    "torch_cpu_latency_ms": 0.8668499940540642,
+    "peak_mem_mb": 9.150464,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 67.54,
+    "fitness": 72.30837374388985,
+    "train_time_s": 30.505142211914062
+  },
+  {
+    "id": 10,
+    "iteration": 7,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s32|1x24k3mbconv-relu6|1x64k7dwsep-relu|3x160k7conv-relu|2x256k7mbconv-hswish",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 24,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 64,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 160,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 256,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 3972578,
+    "params_m": 3.972578,
+    "state_dict_mb": 15.962365,
+    "onnx_size_mb": 15.870033,
+    "ort_latency_ms": 3.8188000326044858,
+    "ort_latency_p90_ms": 3.926710016094148,
+    "torch_cpu_latency_ms": 5.025249993195757,
+    "peak_mem_mb": 49.811456,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 3.82>1.5ms;size 15.87>2.0MB;mem 49.8>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 11,
+    "iteration": 7,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s24|3x32k3mbconv-relu|2x32k5mbconv-relu|3x128k3conv-silu|2x192k7dwsep-relu6",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 32,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 2,
+          "channels": 192,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 10,
+    "params": 514466,
+    "params_m": 0.514466,
+    "state_dict_mb": 2.128411,
+    "onnx_size_mb": 2.055091,
+    "ort_latency_ms": 1.0032500140368938,
+    "ort_latency_p90_ms": 1.1296599870547652,
+    "torch_cpu_latency_ms": 2.526800031773746,
+    "peak_mem_mb": 11.894784,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 2.06>2.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 12,
+    "iteration": 7,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s24|3x48k7conv-relu|3x48k7dwsep-relu6|1x96k7dwsep-silu|3x256k3dwsep-silu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 256,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 10,
+    "params": 537506,
+    "params_m": 0.537506,
+    "state_dict_mb": 2.206871,
+    "onnx_size_mb": 2.15016,
+    "ort_latency_ms": 4.592900018906221,
+    "ort_latency_p90_ms": 5.068330001085997,
+    "torch_cpu_latency_ms": 5.429949989775196,
+    "peak_mem_mb": 11.63264,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 4.59>1.5ms;size 2.15>2.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 13,
+    "iteration": 7,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s16|1x48k3dwsep-relu6|2x96k7mbconv-relu|1x160k5dwsep-silu|1x256k3mbconv-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 48,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu6"
+        },
+        {
+          "depth": 2,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 256,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 5,
+    "params": 495754,
+    "params_m": 0.495754,
+    "state_dict_mb": 2.041359,
+    "onnx_size_mb": 1.972299,
+    "ort_latency_ms": 1.4987000031396747,
+    "ort_latency_p90_ms": 1.5460300084669143,
+    "torch_cpu_latency_ms": 2.3865000111982226,
+    "peak_mem_mb": 11.9808,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.78,
+    "fitness": 80.7821012128981,
+    "train_time_s": 115.76232576370239
+  },
+  {
+    "id": 14,
+    "iteration": 8,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s16|2x48k5conv-relu6|1x32k7mbconv-relu|1x64k7mbconv-relu6|2x192k7conv-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 48,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 2,
+          "channels": 192,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 6,
+    "params": 2583706,
+    "params_m": 2.583706,
+    "state_dict_mb": 10.371205,
+    "onnx_size_mb": 10.334482,
+    "ort_latency_ms": 1.0935500031337142,
+    "ort_latency_p90_ms": 1.1537499900441617,
+    "torch_cpu_latency_ms": 2.8987000114284456,
+    "peak_mem_mb": 48.381952,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 10.33>2.0MB;mem 48.4>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 15,
+    "iteration": 8,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s32|1x16k5dwsep-relu|2x48k7mbconv-hswish|1x96k5conv-relu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 48,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 3,
+    "total_blocks": 4,
+    "params": 181674,
+    "params_m": 0.181674,
+    "state_dict_mb": 0.757591,
+    "onnx_size_mb": 0.72736,
+    "ort_latency_ms": 0.38174999644979835,
+    "ort_latency_p90_ms": 0.4722599813248962,
+    "torch_cpu_latency_ms": 0.9559500031173229,
+    "peak_mem_mb": 8.945664,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 75.46,
+    "fitness": 78.62237657002127,
+    "train_time_s": 44.01647591590881
+  },
+  {
+    "id": 16,
+    "iteration": 9,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 264426,
+    "params_m": 0.264426,
+    "state_dict_mb": 1.115695,
+    "onnx_size_mb": 1.048851,
+    "ort_latency_ms": 1.0508500272408128,
+    "ort_latency_p90_ms": 1.1259799590334296,
+    "torch_cpu_latency_ms": 1.790949987480417,
+    "peak_mem_mb": 10.207232,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.94,
+    "fitness": 80.79800906461097,
+    "train_time_s": 67.25331735610962
+  },
+  {
+    "id": 17,
+    "iteration": 10,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s24|3x24k3dwsep-hswish|1x48k3dwsep-hswish|2x128k7conv-hswish|3x128k3dwsep-relu6",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 24,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 48,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 2,
+          "channels": 128,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 1199250,
+    "params_m": 1.19925,
+    "state_dict_mb": 4.845219,
+    "onnx_size_mb": 4.80095,
+    "ort_latency_ms": 1.112099998863414,
+    "ort_latency_p90_ms": 1.3064600352663547,
+    "torch_cpu_latency_ms": 2.0510499889496714,
+    "peak_mem_mb": 24.90368,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 4.80>2.0MB;mem 24.9>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 18,
+    "iteration": 10,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s24|2x48k7conv-hswish|1x96k7conv-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 48,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 2,
+    "total_blocks": 3,
+    "params": 423874,
+    "params_m": 0.423874,
+    "state_dict_mb": 1.710083,
+    "onnx_size_mb": 1.69652,
+    "ort_latency_ms": 5.816099990624934,
+    "ort_latency_p90_ms": 6.31281997775659,
+    "torch_cpu_latency_ms": 5.887649982469156,
+    "peak_mem_mb": 12.4928,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 5.82>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 19,
+    "iteration": 10,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s32|3x16k5dwsep-hswish|2x96k3conv-silu|2x128k5conv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 16,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 2,
+          "channels": 96,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 2,
+          "channels": 128,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 7,
+    "params": 854090,
+    "params_m": 0.85409,
+    "state_dict_mb": 3.447813,
+    "onnx_size_mb": 3.420163,
+    "ort_latency_ms": 0.7751499651931226,
+    "ort_latency_p90_ms": 0.7915899739600718,
+    "torch_cpu_latency_ms": 1.3762000016868114,
+    "peak_mem_mb": 18.624512,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 3.42>2.0MB;mem 18.6>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 20,
+    "iteration": 10,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s24|2x16k5dwsep-relu6|1x96k7conv-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 16,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 2,
+    "total_blocks": 3,
+    "params": 105594,
+    "params_m": 0.105594,
+    "state_dict_mb": 0.440863,
+    "onnx_size_mb": 0.426689,
+    "ort_latency_ms": 0.7652000058442354,
+    "ort_latency_p90_ms": 0.7909899752121419,
+    "torch_cpu_latency_ms": 1.072949991794303,
+    "peak_mem_mb": 8.966144,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 63.26,
+    "fitness": 64.55036114802598,
+    "train_time_s": 36.8226957321167
+  },
+  {
+    "id": 21,
+    "iteration": 11,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s32|1x16k5conv-relu|2x64k5dwsep-relu6",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 64,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 3,
+    "params": 40762,
+    "params_m": 0.040762,
+    "state_dict_mb": 0.181855,
+    "onnx_size_mb": 0.166757,
+    "ort_latency_ms": 0.19115000031888485,
+    "ort_latency_p90_ms": 0.23522998671978712,
+    "torch_cpu_latency_ms": 0.5496499943546951,
+    "peak_mem_mb": 7.286784,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 61.84,
+    "fitness": 65.78259318269065,
+    "train_time_s": 18.487970113754272
+  },
+  {
+    "id": 22,
+    "iteration": 12,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s24|1x32k7conv-silu|1x64k3conv-relu|3x160k7conv-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 64,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 160,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 3112514,
+    "params_m": 3.112514,
+    "state_dict_mb": 12.471647,
+    "onnx_size_mb": 12.449915,
+    "ort_latency_ms": 2.141050004865974,
+    "ort_latency_p90_ms": 2.4439200351480395,
+    "torch_cpu_latency_ms": 3.0215999868232757,
+    "peak_mem_mb": 46.104576,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.14>1.5ms;size 12.45>2.0MB;mem 46.1>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 23,
+    "iteration": 12,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s24|1x16k3mbconv-relu6|1x48k5dwsep-hswish|3x96k3mbconv-silu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 48,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 222930,
+    "params_m": 0.22293,
+    "state_dict_mb": 0.946429,
+    "onnx_size_mb": 0.885323,
+    "ort_latency_ms": 0.4098000063095242,
+    "ort_latency_p90_ms": 0.5042699980549514,
+    "torch_cpu_latency_ms": 1.250200002687052,
+    "peak_mem_mb": 9.986048,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 74.88,
+    "fitness": 77.8522941149541,
+    "train_time_s": 47.31102681159973
+  },
+  {
+    "id": 24,
+    "iteration": 13,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s24|3x48k7dwsep-hswish|2x96k7mbconv-relu6",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 2,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 172810,
+    "params_m": 0.17281,
+    "state_dict_mb": 0.735137,
+    "onnx_size_mb": 0.69051,
+    "ort_latency_ms": 1.7927499720826745,
+    "ort_latency_p90_ms": 2.0280699827708304,
+    "torch_cpu_latency_ms": 2.510500024072826,
+    "peak_mem_mb": 13.377536,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 1.79>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 25,
+    "iteration": 13,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s16|1x32k7mbconv-hswish|2x32k7conv-hswish|3x96k5mbconv-hswish|3x256k3conv-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 3,
+          "channels": 256,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 1768858,
+    "params_m": 1.768858,
+    "state_dict_mb": 7.140631,
+    "onnx_size_mb": 7.063422,
+    "ort_latency_ms": 1.7364999803248793,
+    "ort_latency_p90_ms": 1.920760003849864,
+    "torch_cpu_latency_ms": 3.307700011646375,
+    "peak_mem_mb": 26.927104,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 1.74>1.5ms;size 7.06>2.0MB;mem 26.9>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 26,
+    "iteration": 13,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r24-s16|1x32k3dwsep-hswish|1x48k7dwsep-hswish",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 32,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 48,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 2,
+    "params": 19850,
+    "params_m": 0.01985,
+    "state_dict_mb": 0.095281,
+    "onnx_size_mb": 0.081323,
+    "ort_latency_ms": 0.06220000796020031,
+    "ort_latency_p90_ms": 0.067210040288046,
+    "torch_cpu_latency_ms": 0.3703499969560653,
+    "peak_mem_mb": 6.934528,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 58.86,
+    "fitness": 64.75738192119601,
+    "train_time_s": 16.424563884735107
+  },
+  {
+    "id": 27,
+    "iteration": 14,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s32|3x16k7conv-relu|3x96k3dwsep-silu|2x160k7mbconv-relu6|1x128k7conv-hswish",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 16,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "silu"
+        },
+        {
+          "depth": 2,
+          "channels": 160,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 1471674,
+    "params_m": 1.471674,
+    "state_dict_mb": 5.949923,
+    "onnx_size_mb": 5.880503,
+    "ort_latency_ms": 1.9260999979451299,
+    "ort_latency_p90_ms": 2.0855299837421626,
+    "torch_cpu_latency_ms": 2.9264999902807176,
+    "peak_mem_mb": 31.494144,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 1.93>1.5ms;size 5.88>2.0MB;mem 31.5>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 28,
+    "iteration": 14,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s24|2x16k5dwsep-hswish|2x96k5conv-relu6|3x96k3dwsep-hswish|1x128k5dwsep-relu6",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 16,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 2,
+          "channels": 96,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 8,
+    "params": 354042,
+    "params_m": 0.354042,
+    "state_dict_mb": 1.459837,
+    "onnx_size_mb": 1.419367,
+    "ort_latency_ms": 1.8811500049196184,
+    "ort_latency_p90_ms": 2.0296399714425206,
+    "torch_cpu_latency_ms": 2.3874000180512667,
+    "peak_mem_mb": 11.902976,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 1.88>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 29,
+    "iteration": 14,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s32|1x24k5dwsep-relu|3x96k5dwsep-relu|1x160k3conv-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 24,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 212354,
+    "params_m": 0.212354,
+    "state_dict_mb": 0.879895,
+    "onnx_size_mb": 0.850249,
+    "ort_latency_ms": 0.5590000073425472,
+    "ort_latency_p90_ms": 0.6557499873451889,
+    "torch_cpu_latency_ms": 1.19934999383986,
+    "peak_mem_mb": 9.17504,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 70.26,
+    "fitness": 72.37165910008383,
+    "train_time_s": 42.221271276474
+  },
+  {
+    "id": 30,
+    "iteration": 15,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s16|3x32k3mbconv-hswish|1x96k5conv-relu|3x160k7mbconv-hswish|3x128k7mbconv-hswish",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 32,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 160,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 10,
+    "params": 1269594,
+    "params_m": 1.269594,
+    "state_dict_mb": 5.207827,
+    "onnx_size_mb": 5.035164,
+    "ort_latency_ms": 2.7790000021923333,
+    "ort_latency_p90_ms": 3.1473900366108865,
+    "torch_cpu_latency_ms": 4.852800018852577,
+    "peak_mem_mb": 17.707008,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.78>1.5ms;size 5.04>2.0MB;mem 17.7>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 31,
+    "iteration": 15,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r32-s24|3x16k7conv-relu|2x96k5conv-silu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 3,
+          "channels": 16,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 96,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 341538,
+    "params_m": 0.341538,
+    "state_dict_mb": 1.385055,
+    "onnx_size_mb": 1.368489,
+    "ort_latency_ms": 2.0339499751571566,
+    "ort_latency_p90_ms": 2.238989993929863,
+    "torch_cpu_latency_ms": 2.274499973282218,
+    "peak_mem_mb": 11.825152,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.03>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 32,
+    "iteration": 15,
+    "phase": "init",
+    "parent_id": null,
+    "summary": "r40-s16|1x16k5dwsep-relu|3x48k3conv-silu|3x128k3conv-silu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 3,
+    "total_blocks": 7,
+    "params": 436682,
+    "params_m": 0.436682,
+    "state_dict_mb": 1.773993,
+    "onnx_size_mb": 1.74954,
+    "ort_latency_ms": 0.9411000064574182,
+    "ort_latency_p90_ms": 0.9759899752680212,
+    "torch_cpu_latency_ms": 1.7520499823149294,
+    "peak_mem_mb": 11.751424,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 74.44,
+    "fitness": 75.48836670949439,
+    "train_time_s": 22.488393545150757
+  },
+  {
+    "id": 33,
+    "iteration": 16,
+    "phase": "evolve",
+    "parent_id": 32,
+    "summary": "r24-s16|1x16k5dwsep-relu|3x48k3conv-silu|3x128k3conv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 7,
+    "params": 436682,
+    "params_m": 0.436682,
+    "state_dict_mb": 1.773993,
+    "onnx_size_mb": 1.74954,
+    "ort_latency_ms": 0.3060000017285347,
+    "ort_latency_p90_ms": 0.37304998841136694,
+    "torch_cpu_latency_ms": 1.0330500081181526,
+    "peak_mem_mb": 11.186176,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 73.84,
+    "fitness": 77.44667605026423,
+    "train_time_s": 13.935816049575806
+  },
+  {
+    "id": 34,
+    "iteration": 17,
+    "phase": "evolve",
+    "parent_id": 6,
+    "summary": "r32-s24|2x32k3dwsep-relu|2x64k3conv-relu|3x128k3mbconv-relu6|2x160k5conv-relu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 64,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 2,
+          "channels": 160,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 1584170,
+    "params_m": 1.58417,
+    "state_dict_mb": 6.405783,
+    "onnx_size_mb": 6.324463,
+    "ort_latency_ms": 1.0512500011827797,
+    "ort_latency_p90_ms": 1.1131799779832363,
+    "torch_cpu_latency_ms": 2.292899996973574,
+    "peak_mem_mb": 27.426816,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 6.32>2.0MB;mem 27.4>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 35,
+    "iteration": 17,
+    "phase": "evolve",
+    "parent_id": 23,
+    "summary": "r32-s24|1x16k3mbconv-relu6|1x48k5dwsep-hswish",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 48,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 2,
+    "total_blocks": 2,
+    "params": 22482,
+    "params_m": 0.022482,
+    "state_dict_mb": 0.109151,
+    "onnx_size_mb": 0.0925,
+    "ort_latency_ms": 0.1918500056490302,
+    "ort_latency_p90_ms": 0.20228002103976905,
+    "torch_cpu_latency_ms": 0.5918500246480107,
+    "peak_mem_mb": 7.74144,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 63.02,
+    "fitness": 67.03047270981716,
+    "train_time_s": 23.392030715942383
+  },
+  {
+    "id": 36,
+    "iteration": 18,
+    "phase": "evolve",
+    "parent_id": 6,
+    "summary": "r32-s24|2x32k3dwsep-relu|2x64k3conv-relu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 64,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 2,
+    "total_blocks": 4,
+    "params": 78250,
+    "params_m": 0.07825,
+    "state_dict_mb": 0.334093,
+    "onnx_size_mb": 0.315191,
+    "ort_latency_ms": 0.3839000128209591,
+    "ort_latency_p90_ms": 0.40196998161263764,
+    "torch_cpu_latency_ms": 0.8818499918561429,
+    "peak_mem_mb": 7.868416,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 65.62,
+    "fitness": 68.35848357574044,
+    "train_time_s": 15.954342603683472
+  },
+  {
+    "id": 37,
+    "iteration": 19,
+    "phase": "evolve",
+    "parent_id": 6,
+    "summary": "r32-s24|2x32k3dwsep-relu|2x32k3conv-relu|3x128k3mbconv-relu6|2x160k5dwsep-relu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 2,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 418698,
+    "params_m": 0.418698,
+    "state_dict_mb": 1.747647,
+    "onnx_size_mb": 1.663838,
+    "ort_latency_ms": 0.5158499989192933,
+    "ort_latency_p90_ms": 0.570819980930537,
+    "torch_cpu_latency_ms": 1.6087999974843115,
+    "peak_mem_mb": 10.018816,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 75.76,
+    "fitness": 78.2252573788251,
+    "train_time_s": 34.664347648620605
+  },
+  {
+    "id": 38,
+    "iteration": 20,
+    "phase": "evolve",
+    "parent_id": 32,
+    "summary": "r40-s16|1x16k5dwsep-relu6|3x48k3conv-silu|3x128k3conv-silu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 16,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu6"
+        },
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 3,
+    "total_blocks": 7,
+    "params": 436682,
+    "params_m": 0.436682,
+    "state_dict_mb": 1.773993,
+    "onnx_size_mb": 1.750766,
+    "ort_latency_ms": 0.9374999790452421,
+    "ort_latency_p90_ms": 0.9863300016149879,
+    "torch_cpu_latency_ms": 1.7411000153515488,
+    "peak_mem_mb": 11.71456,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 74.3,
+    "fitness": 75.35505888241985,
+    "train_time_s": 18.74677348136902
+  },
+  {
+    "id": 39,
+    "iteration": 21,
+    "phase": "evolve",
+    "parent_id": 16,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k7mbconv-silu|2x96k3conv-hswish|2x256k5dwsep-hswish",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 2,
+          "channels": 96,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 2,
+          "channels": 256,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 572298,
+    "params_m": 0.572298,
+    "state_dict_mb": 2.367719,
+    "onnx_size_mb": 2.275414,
+    "ort_latency_ms": 1.0652500204741955,
+    "ort_latency_p90_ms": 1.2152399925980717,
+    "torch_cpu_latency_ms": 2.4070999934338033,
+    "peak_mem_mb": 12.128256,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 2.28>2.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 40,
+    "iteration": 21,
+    "phase": "evolve",
+    "parent_id": 29,
+    "summary": "r40-s16|1x24k5dwsep-relu|3x96k5dwsep-relu|1x160k3conv-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 1,
+          "channels": 24,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 3,
+    "total_blocks": 5,
+    "params": 211074,
+    "params_m": 0.211074,
+    "state_dict_mb": 0.874519,
+    "onnx_size_mb": 0.845319,
+    "ort_latency_ms": 0.5854499759152532,
+    "ort_latency_p90_ms": 0.6153099646326154,
+    "torch_cpu_latency_ms": 1.1491499899420887,
+    "peak_mem_mb": 9.23648,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 69.34,
+    "fitness": 71.32501658558553,
+    "train_time_s": 22.826380252838135
+  },
+  {
+    "id": 41,
+    "iteration": 22,
+    "phase": "evolve",
+    "parent_id": 16,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 260450,
+    "params_m": 0.26045,
+    "state_dict_mb": 1.099375,
+    "onnx_size_mb": 1.033447,
+    "ort_latency_ms": 1.072049984941259,
+    "ort_latency_p90_ms": 1.1115100234746933,
+    "torch_cpu_latency_ms": 1.736150006763637,
+    "peak_mem_mb": 10.125312,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.54,
+    "fitness": 80.34555838763174,
+    "train_time_s": 51.01354765892029
+  },
+  {
+    "id": 42,
+    "iteration": 23,
+    "phase": "evolve",
+    "parent_id": 16,
+    "summary": "r24-s32|2x32k5conv-relu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 291818,
+    "params_m": 0.291818,
+    "state_dict_mb": 1.213235,
+    "onnx_size_mb": 1.160511,
+    "ort_latency_ms": 1.0557999776210636,
+    "ort_latency_p90_ms": 1.286040007835254,
+    "torch_cpu_latency_ms": 1.739700004691258,
+    "peak_mem_mb": 8.92928,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 77.92,
+    "fitness": 78.74522571378236,
+    "train_time_s": 34.168981075286865
+  },
+  {
+    "id": 43,
+    "iteration": 24,
+    "phase": "evolve",
+    "parent_id": 42,
+    "summary": "r24-s32|2x32k5conv-silu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 291818,
+    "params_m": 0.291818,
+    "state_dict_mb": 1.213235,
+    "onnx_size_mb": 1.161114,
+    "ort_latency_ms": 1.1915000213775784,
+    "ort_latency_p90_ms": 1.3020000071264803,
+    "torch_cpu_latency_ms": 1.7588500049896538,
+    "peak_mem_mb": 10.436608,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.48,
+    "fitness": 79.02398211190273,
+    "train_time_s": 33.401105642318726
+  },
+  {
+    "id": 44,
+    "iteration": 25,
+    "phase": "evolve",
+    "parent_id": 37,
+    "summary": "r32-s24|2x32k3dwsep-relu|2x32k3conv-relu|3x128k3mbconv-relu|2x160k5dwsep-relu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 128,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 418698,
+    "params_m": 0.418698,
+    "state_dict_mb": 1.747647,
+    "onnx_size_mb": 1.661284,
+    "ort_latency_ms": 0.5415999912656844,
+    "ort_latency_p90_ms": 0.5636299843899906,
+    "torch_cpu_latency_ms": 1.611349987797439,
+    "peak_mem_mb": 10.010624,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 76.4,
+    "fitness": 78.7708871840872,
+    "train_time_s": 28.66481041908264
+  },
+  {
+    "id": 45,
+    "iteration": 26,
+    "phase": "evolve",
+    "parent_id": 41,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 283778,
+    "params_m": 0.283778,
+    "state_dict_mb": 1.198487,
+    "onnx_size_mb": 1.125881,
+    "ort_latency_ms": 0.9580999903846532,
+    "ort_latency_p90_ms": 1.0531700274441391,
+    "torch_cpu_latency_ms": 1.8057000124827027,
+    "peak_mem_mb": 10.268672,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.2,
+    "fitness": 81.28581808890016,
+    "train_time_s": 49.404359102249146
+  },
+  {
+    "id": 46,
+    "iteration": 27,
+    "phase": "evolve",
+    "parent_id": 43,
+    "summary": "r24-s32|2x32k5dwsep-silu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 244394,
+    "params_m": 0.244394,
+    "state_dict_mb": 1.028111,
+    "onnx_size_mb": 0.972666,
+    "ort_latency_ms": 0.8920499822124839,
+    "ort_latency_p90_ms": 0.9259400016162544,
+    "torch_cpu_latency_ms": 1.5419499832205474,
+    "peak_mem_mb": 10.01472,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 77.7,
+    "fitness": 78.92090939136118,
+    "train_time_s": 36.968515396118164
+  },
+  {
+    "id": 47,
+    "iteration": 28,
+    "phase": "evolve",
+    "parent_id": 43,
+    "summary": "r24-s24|2x32k5conv-silu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 285186,
+    "params_m": 0.285186,
+    "state_dict_mb": 1.186803,
+    "onnx_size_mb": 1.134574,
+    "ort_latency_ms": 1.2664499809034169,
+    "ort_latency_p90_ms": 1.319710025563836,
+    "torch_cpu_latency_ms": 1.753749995259568,
+    "peak_mem_mb": 10.30144,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.98,
+    "fitness": 79.3820346049436,
+    "train_time_s": 34.836679220199585
+  },
+  {
+    "id": 48,
+    "iteration": 29,
+    "phase": "evolve",
+    "parent_id": 46,
+    "summary": "r24-s32|2x32k5conv-silu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 291818,
+    "params_m": 0.291818,
+    "state_dict_mb": 1.213235,
+    "onnx_size_mb": 1.161114,
+    "ort_latency_ms": 1.1915000213775784,
+    "ort_latency_p90_ms": 1.3020000071264803,
+    "torch_cpu_latency_ms": 1.7588500049896538,
+    "peak_mem_mb": 10.436608,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "duplicate",
+    "val_top1": 78.48,
+    "fitness": 79.02398211190273,
+    "train_time_s": 33.401105642318726
+  },
+  {
+    "id": 49,
+    "iteration": 29,
+    "phase": "evolve",
+    "parent_id": 45,
+    "summary": "r24-s24|2x32k5mbconv-relu|1x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 4,
+    "params": 95234,
+    "params_m": 0.095234,
+    "state_dict_mb": 0.418547,
+    "onnx_size_mb": 0.379761,
+    "ort_latency_ms": 0.42490000487305224,
+    "ort_latency_p90_ms": 0.4382699611596763,
+    "torch_cpu_latency_ms": 1.0157999931834638,
+    "peak_mem_mb": 8.43776,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 74.0,
+    "fitness": 76.85389017433991,
+    "train_time_s": 30.27711033821106
+  },
+  {
+    "id": 50,
+    "iteration": 30,
+    "phase": "evolve",
+    "parent_id": 45,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-silu|1x160k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 295106,
+    "params_m": 0.295106,
+    "state_dict_mb": 1.244055,
+    "onnx_size_mb": 1.171547,
+    "ort_latency_ms": 0.9397499961778522,
+    "ort_latency_p90_ms": 1.0577800159808248,
+    "torch_cpu_latency_ms": 1.8296500202268362,
+    "peak_mem_mb": 9.437184,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.42,
+    "fitness": 80.54197047879205,
+    "train_time_s": 45.75654363632202
+  },
+  {
+    "id": 51,
+    "iteration": 31,
+    "phase": "evolve",
+    "parent_id": 50,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-silu|1x160k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 311970,
+    "params_m": 0.31197,
+    "state_dict_mb": 1.317823,
+    "onnx_size_mb": 1.238495,
+    "ort_latency_ms": 1.0222999844700098,
+    "ort_latency_p90_ms": 1.050500018754974,
+    "torch_cpu_latency_ms": 1.9695499795489013,
+    "peak_mem_mb": 9.060352,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.28,
+    "fitness": 81.20873602567383,
+    "train_time_s": 53.07114291191101
+  },
+  {
+    "id": 52,
+    "iteration": 32,
+    "phase": "evolve",
+    "parent_id": 50,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-silu|1x160k5dwsep-relu|1x128k3conv-hswish",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 3,
+          "block": "conv",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 471490,
+    "params_m": 0.47149,
+    "state_dict_mb": 1.952587,
+    "onnx_size_mb": 1.876607,
+    "ort_latency_ms": 1.0024000075645745,
+    "ort_latency_p90_ms": 1.1001200415194035,
+    "torch_cpu_latency_ms": 2.113499998813495,
+    "peak_mem_mb": 12.320768,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.02,
+    "fitness": 80.99347879339737,
+    "train_time_s": 47.49793076515198
+  },
+  {
+    "id": 53,
+    "iteration": 33,
+    "phase": "evolve",
+    "parent_id": 45,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 280314,
+    "params_m": 0.280314,
+    "state_dict_mb": 1.183895,
+    "onnx_size_mb": 1.112794,
+    "ort_latency_ms": 0.9814499935600907,
+    "ort_latency_p90_ms": 0.9973700216505677,
+    "torch_cpu_latency_ms": 1.7880499945022166,
+    "peak_mem_mb": 10.248192,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.46,
+    "fitness": 80.47764388149223,
+    "train_time_s": 47.52023720741272
+  },
+  {
+    "id": 54,
+    "iteration": 34,
+    "phase": "evolve",
+    "parent_id": 51,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-relu6|1x160k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 311970,
+    "params_m": 0.31197,
+    "state_dict_mb": 1.317823,
+    "onnx_size_mb": 1.239633,
+    "ort_latency_ms": 0.9015000250656158,
+    "ort_latency_p90_ms": 1.032550004310906,
+    "torch_cpu_latency_ms": 1.8552500114310533,
+    "peak_mem_mb": 9.187328,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.0,
+    "fitness": 81.23136525304234,
+    "train_time_s": 49.497973680496216
+  },
+  {
+    "id": 55,
+    "iteration": 35,
+    "phase": "evolve",
+    "parent_id": 53,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x96k5mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 258810,
+    "params_m": 0.25881,
+    "state_dict_mb": 1.097879,
+    "onnx_size_mb": 1.026776,
+    "ort_latency_ms": 0.7493000011891127,
+    "ort_latency_p90_ms": 0.8986100263427943,
+    "torch_cpu_latency_ms": 1.7278500308748335,
+    "peak_mem_mb": 10.166272,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.22,
+    "fitness": 80.88684645221628,
+    "train_time_s": 51.39167904853821
+  },
+  {
+    "id": 56,
+    "iteration": 36,
+    "phase": "evolve",
+    "parent_id": 51,
+    "summary": "r40-s24|2x32k5mbconv-relu|3x96k7mbconv-silu|1x160k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 311970,
+    "params_m": 0.31197,
+    "state_dict_mb": 1.317823,
+    "onnx_size_mb": 1.238495,
+    "ort_latency_ms": 2.471449988661334,
+    "ort_latency_p90_ms": 2.7027500269468874,
+    "torch_cpu_latency_ms": 3.811649978160858,
+    "peak_mem_mb": 10.93632,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.47>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 57,
+    "iteration": 36,
+    "phase": "evolve",
+    "parent_id": 45,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 287754,
+    "params_m": 0.287754,
+    "state_dict_mb": 1.214807,
+    "onnx_size_mb": 1.141285,
+    "ort_latency_ms": 1.010849984595552,
+    "ort_latency_p90_ms": 1.1227999872062355,
+    "torch_cpu_latency_ms": 1.857049996033311,
+    "peak_mem_mb": 10.40384,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 81.02,
+    "fitness": 81.98499515803039,
+    "train_time_s": 49.224836349487305
+  },
+  {
+    "id": 58,
+    "iteration": 37,
+    "phase": "evolve",
+    "parent_id": 45,
+    "summary": "r24-s24|2x32k5dwsep-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 267018,
+    "params_m": 0.267018,
+    "state_dict_mb": 1.124463,
+    "onnx_size_mb": 1.061197,
+    "ort_latency_ms": 0.7513999880757183,
+    "ort_latency_p90_ms": 0.8593199716415256,
+    "torch_cpu_latency_ms": 1.5663999947719276,
+    "peak_mem_mb": 10.469376,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 77.68,
+    "fitness": 79.30778474262551,
+    "train_time_s": 38.431034326553345
+  },
+  {
+    "id": 59,
+    "iteration": 38,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 264426,
+    "params_m": 0.264426,
+    "state_dict_mb": 1.115695,
+    "onnx_size_mb": 1.048851,
+    "ort_latency_ms": 1.0508500272408128,
+    "ort_latency_p90_ms": 1.1259799590334296,
+    "torch_cpu_latency_ms": 1.790949987480417,
+    "peak_mem_mb": 10.207232,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "duplicate",
+    "val_top1": 79.94,
+    "fitness": 80.79800906461097,
+    "train_time_s": 67.25331735610962
+  },
+  {
+    "id": 60,
+    "iteration": 38,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5conv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 315146,
+    "params_m": 0.315146,
+    "state_dict_mb": 1.312335,
+    "onnx_size_mb": 1.252943,
+    "ort_latency_ms": 1.2423499720171094,
+    "ort_latency_p90_ms": 1.2660299777053297,
+    "torch_cpu_latency_ms": 1.8215000163763762,
+    "peak_mem_mb": 9.101312,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.26,
+    "fitness": 79.70939028625652,
+    "train_time_s": 35.0434091091156
+  },
+  {
+    "id": 61,
+    "iteration": 39,
+    "phase": "evolve",
+    "parent_id": 54,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-relu6|1x96k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 295778,
+    "params_m": 0.295778,
+    "state_dict_mb": 1.252031,
+    "onnx_size_mb": 1.175275,
+    "ort_latency_ms": 0.9741499670781195,
+    "ort_latency_p90_ms": 0.9919999865815043,
+    "torch_cpu_latency_ms": 1.84009998338297,
+    "peak_mem_mb": 10.518528,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.84,
+    "fitness": 80.88062367138527,
+    "train_time_s": 53.40139412879944
+  },
+  {
+    "id": 62,
+    "iteration": 40,
+    "phase": "evolve",
+    "parent_id": 51,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-silu|1x160k5conv-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 678018,
+    "params_m": 0.678018,
+    "state_dict_mb": 2.779211,
+    "onnx_size_mb": 2.702845,
+    "ort_latency_ms": 1.0845500219147652,
+    "ort_latency_p90_ms": 1.2840599985793233,
+    "torch_cpu_latency_ms": 2.1181500051170588,
+    "peak_mem_mb": 16.502784,
+    "peak_mem_method": "peak_wset",
+    "violations": "size 2.70>2.0MB;mem 16.5>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 63,
+    "iteration": 40,
+    "phase": "evolve",
+    "parent_id": 54,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-hswish|1x160k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 311970,
+    "params_m": 0.31197,
+    "state_dict_mb": 1.317823,
+    "onnx_size_mb": 1.237199,
+    "ort_latency_ms": 1.0022000060416758,
+    "ort_latency_p90_ms": 1.0403299995232373,
+    "torch_cpu_latency_ms": 1.874349982244894,
+    "peak_mem_mb": 9.3184,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.24,
+    "fitness": 81.21664137485544,
+    "train_time_s": 48.41042709350586
+  },
+  {
+    "id": 64,
+    "iteration": 41,
+    "phase": "evolve",
+    "parent_id": 52,
+    "summary": "r24-s24|2x32k5mbconv-relu|3x96k7mbconv-silu|1x160k5dwsep-relu|1x128k3dwsep-hswish",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "hswish"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 309410,
+    "params_m": 0.30941,
+    "state_dict_mb": 1.307583,
+    "onnx_size_mb": 1.22764,
+    "ort_latency_ms": 0.9772999910637736,
+    "ort_latency_p90_ms": 1.0635400016326457,
+    "torch_cpu_latency_ms": 1.9653000053949654,
+    "peak_mem_mb": 9.089024,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.16,
+    "fitness": 80.18399429719216,
+    "train_time_s": 51.38138461112976
+  },
+  {
+    "id": 65,
+    "iteration": 42,
+    "phase": "evolve",
+    "parent_id": 61,
+    "summary": "r24-s24|2x32k5conv-relu|3x96k7mbconv-relu6|1x96k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 320514,
+    "params_m": 0.320514,
+    "state_dict_mb": 1.339439,
+    "onnx_size_mb": 1.275796,
+    "ort_latency_ms": 1.0291000362485647,
+    "ort_latency_p90_ms": 1.2113600212614983,
+    "torch_cpu_latency_ms": 1.8449999915901572,
+    "peak_mem_mb": 9.449472,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.16,
+    "fitness": 80.05985431820724,
+    "train_time_s": 38.97110390663147
+  },
+  {
+    "id": 66,
+    "iteration": 43,
+    "phase": "evolve",
+    "parent_id": 54,
+    "summary": "r40-s24|2x32k5mbconv-relu|3x96k7mbconv-relu6|1x160k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 311970,
+    "params_m": 0.31197,
+    "state_dict_mb": 1.317823,
+    "onnx_size_mb": 1.239633,
+    "ort_latency_ms": 2.3456500202883035,
+    "ort_latency_p90_ms": 2.6568000088445842,
+    "torch_cpu_latency_ms": 3.4243999689351767,
+    "peak_mem_mb": 11.030528,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.35>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 67,
+    "iteration": 43,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r40-s32|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 287754,
+    "params_m": 0.287754,
+    "state_dict_mb": 1.214807,
+    "onnx_size_mb": 1.141285,
+    "ort_latency_ms": 2.6636500260792673,
+    "ort_latency_p90_ms": 2.815380011452362,
+    "torch_cpu_latency_ms": 3.726399998413399,
+    "peak_mem_mb": 12.71808,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.66>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 68,
+    "iteration": 43,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r40-s32|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 287754,
+    "params_m": 0.287754,
+    "state_dict_mb": 1.214807,
+    "onnx_size_mb": 1.141285,
+    "ort_latency_ms": 2.6636500260792673,
+    "ort_latency_p90_ms": 2.815380011452362,
+    "torch_cpu_latency_ms": 3.726399998413399,
+    "peak_mem_mb": 12.71808,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.66>1.5ms",
+    "status": "duplicate",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 69,
+    "iteration": 43,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x64k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 183018,
+    "params_m": 0.183018,
+    "state_dict_mb": 0.790743,
+    "onnx_size_mb": 0.725827,
+    "ort_latency_ms": 0.7887000101618469,
+    "ort_latency_p90_ms": 0.8348200062755495,
+    "torch_cpu_latency_ms": 1.6059499757830054,
+    "peak_mem_mb": 9.560064,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.06,
+    "fitness": 81.6189433707112,
+    "train_time_s": 52.22260236740112
+  },
+  {
+    "id": 70,
+    "iteration": 44,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k7mbconv-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 2,
+    "total_blocks": 5,
+    "params": 264426,
+    "params_m": 0.264426,
+    "state_dict_mb": 1.115695,
+    "onnx_size_mb": 1.048851,
+    "ort_latency_ms": 1.0508500272408128,
+    "ort_latency_p90_ms": 1.1259799590334296,
+    "torch_cpu_latency_ms": 1.790949987480417,
+    "peak_mem_mb": 10.207232,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "duplicate",
+    "val_top1": 79.94,
+    "fitness": 80.79800906461097,
+    "train_time_s": 67.25331735610962
+  },
+  {
+    "id": 71,
+    "iteration": 44,
+    "phase": "evolve",
+    "parent_id": 50,
+    "summary": "r24-s24|2x32k5conv-relu|3x96k7mbconv-silu|1x160k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "conv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 160,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 319842,
+    "params_m": 0.319842,
+    "state_dict_mb": 1.331471,
+    "onnx_size_mb": 1.27207,
+    "ort_latency_ms": 1.184750028187409,
+    "ort_latency_p90_ms": 1.266720035346225,
+    "torch_cpu_latency_ms": 1.8097000138368458,
+    "peak_mem_mb": 9.609216,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.62,
+    "fitness": 80.18554940423758,
+    "train_time_s": 34.63241481781006
+  },
+  {
+    "id": 72,
+    "iteration": 45,
+    "phase": "evolve",
+    "parent_id": 69,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x64k5mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 167658,
+    "params_m": 0.167658,
+    "state_dict_mb": 0.729303,
+    "onnx_size_mb": 0.664385,
+    "ort_latency_ms": 0.6121000042185187,
+    "ort_latency_p90_ms": 0.7348100014496595,
+    "torch_cpu_latency_ms": 1.5688999556005,
+    "peak_mem_mb": 9.310208,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 77.22,
+    "fitness": 79.32459502605207,
+    "train_time_s": 43.796648025512695
+  },
+  {
+    "id": 73,
+    "iteration": 46,
+    "phase": "evolve",
+    "parent_id": 55,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x48k5mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 48,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 123210,
+    "params_m": 0.12321,
+    "state_dict_mb": 0.547735,
+    "onnx_size_mb": 0.491096,
+    "ort_latency_ms": 0.5345000245142728,
+    "ort_latency_p90_ms": 0.5676399625372142,
+    "torch_cpu_latency_ms": 1.3867999950889498,
+    "peak_mem_mb": 8.876032,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 76.48,
+    "fitness": 78.88459227261647,
+    "train_time_s": 39.37129545211792
+  },
+  {
+    "id": 74,
+    "iteration": 47,
+    "phase": "evolve",
+    "parent_id": 55,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x96k5mbconv-silu|1x128k5dwsep-relu|2x192k5dwsep-relu6",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 2,
+          "channels": 192,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu6"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 8,
+    "params": 346042,
+    "params_m": 0.346042,
+    "state_dict_mb": 1.460519,
+    "onnx_size_mb": 1.375295,
+    "ort_latency_ms": 0.8414499752689153,
+    "ort_latency_p90_ms": 0.9285300155170262,
+    "torch_cpu_latency_ms": 2.0523500279523432,
+    "peak_mem_mb": 9.85088,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.78,
+    "fitness": 80.1581831842392,
+    "train_time_s": 55.14378261566162
+  },
+  {
+    "id": 75,
+    "iteration": 48,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k7conv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "conv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 1130122,
+    "params_m": 1.130122,
+    "state_dict_mb": 4.558003,
+    "onnx_size_mb": 4.519748,
+    "ort_latency_ms": 2.5352500088047236,
+    "ort_latency_p90_ms": 2.841399982571602,
+    "torch_cpu_latency_ms": 2.871549950214103,
+    "peak_mem_mb": 21.078016,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.54>1.5ms;size 4.52>2.0MB;mem 21.1>15.0MB",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 76,
+    "iteration": 48,
+    "phase": "evolve",
+    "parent_id": 61,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x96k7mbconv-relu6|1x96k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 292314,
+    "params_m": 0.292314,
+    "state_dict_mb": 1.237439,
+    "onnx_size_mb": 1.162188,
+    "ort_latency_ms": 0.9177000029012561,
+    "ort_latency_p90_ms": 0.9513099677860737,
+    "torch_cpu_latency_ms": 1.802799990400672,
+    "peak_mem_mb": 8.859648,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.92,
+    "fitness": 80.09193613043006,
+    "train_time_s": 47.35402798652649
+  },
+  {
+    "id": 77,
+    "iteration": 49,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r32-s32|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 32,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 32,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 287754,
+    "params_m": 0.287754,
+    "state_dict_mb": 1.214807,
+    "onnx_size_mb": 1.141285,
+    "ort_latency_ms": 1.8296000198461115,
+    "ort_latency_p90_ms": 1.9205400079954416,
+    "torch_cpu_latency_ms": 2.764799981378019,
+    "peak_mem_mb": 11.804672,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 1.83>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 78,
+    "iteration": 49,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 280314,
+    "params_m": 0.280314,
+    "state_dict_mb": 1.183895,
+    "onnx_size_mb": 1.112794,
+    "ort_latency_ms": 0.9814499935600907,
+    "ort_latency_p90_ms": 0.9973700216505677,
+    "torch_cpu_latency_ms": 1.7880499945022166,
+    "peak_mem_mb": 10.248192,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "duplicate",
+    "val_top1": 79.46,
+    "fitness": 80.47764388149223,
+    "train_time_s": 47.52023720741272
+  },
+  {
+    "id": 79,
+    "iteration": 49,
+    "phase": "evolve",
+    "parent_id": 61,
+    "summary": "r40-s24|2x32k5mbconv-relu|3x96k7mbconv-relu6|1x96k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 295778,
+    "params_m": 0.295778,
+    "state_dict_mb": 1.252031,
+    "onnx_size_mb": 1.175275,
+    "ort_latency_ms": 2.303849993040785,
+    "ort_latency_p90_ms": 2.566320006735623,
+    "torch_cpu_latency_ms": 3.4121499920729548,
+    "peak_mem_mb": 12.673024,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.30>1.5ms",
+    "status": "rejected",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 80,
+    "iteration": 49,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k7mbconv-hswish|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 287754,
+    "params_m": 0.287754,
+    "state_dict_mb": 1.214807,
+    "onnx_size_mb": 1.139989,
+    "ort_latency_ms": 0.9236499899998307,
+    "ort_latency_p90_ms": 1.1062600184231997,
+    "torch_cpu_latency_ms": 1.7948999884538352,
+    "peak_mem_mb": 8.945664,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.32,
+    "fitness": 81.49692353689564,
+    "train_time_s": 47.6443874835968
+  },
+  {
+    "id": 81,
+    "iteration": 50,
+    "phase": "evolve",
+    "parent_id": 69,
+    "summary": "r24-s32|2x48k5mbconv-relu|3x64k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 48,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 209834,
+    "params_m": 0.209834,
+    "state_dict_mb": 0.900311,
+    "onnx_size_mb": 0.831557,
+    "ort_latency_ms": 0.8994499803520739,
+    "ort_latency_p90_ms": 1.042669959133491,
+    "torch_cpu_latency_ms": 1.9303500012028962,
+    "peak_mem_mb": 10.07616,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 80.46,
+    "fitness": 81.7040257001299,
+    "train_time_s": 64.8509840965271
+  },
+  {
+    "id": 82,
+    "iteration": 51,
+    "phase": "evolve",
+    "parent_id": 61,
+    "summary": "r40-s24|2x32k5mbconv-relu|3x96k7mbconv-relu6|1x96k5dwsep-relu|1x128k5dwsep-silu",
+    "arch": {
+      "resolution": 40,
+      "stem_channels": 24,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "relu6"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "silu"
+        }
+      ]
+    },
+    "resolution": 40,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 295778,
+    "params_m": 0.295778,
+    "state_dict_mb": 1.252031,
+    "onnx_size_mb": 1.175275,
+    "ort_latency_ms": 2.303849993040785,
+    "ort_latency_p90_ms": 2.566320006735623,
+    "torch_cpu_latency_ms": 3.4121499920729548,
+    "peak_mem_mb": 12.673024,
+    "peak_mem_method": "peak_wset",
+    "violations": "latency 2.30>1.5ms",
+    "status": "duplicate",
+    "val_top1": null,
+    "fitness": null,
+    "train_time_s": 0
+  },
+  {
+    "id": 83,
+    "iteration": 51,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x64k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 183018,
+    "params_m": 0.183018,
+    "state_dict_mb": 0.790743,
+    "onnx_size_mb": 0.725827,
+    "ort_latency_ms": 0.7887000101618469,
+    "ort_latency_p90_ms": 0.8348200062755495,
+    "torch_cpu_latency_ms": 1.6059499757830054,
+    "peak_mem_mb": 9.560064,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "duplicate",
+    "val_top1": 80.06,
+    "fitness": 81.6189433707112,
+    "train_time_s": 52.22260236740112
+  },
+  {
+    "id": 84,
+    "iteration": 51,
+    "phase": "evolve",
+    "parent_id": 57,
+    "summary": "r24-s32|2x32k5mbconv-relu|3x96k3mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 3,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 251914,
+    "params_m": 0.251914,
+    "state_dict_mb": 1.071447,
+    "onnx_size_mb": 0.997919,
+    "ort_latency_ms": 0.88235002476722,
+    "ort_latency_p90_ms": 0.9118800109717995,
+    "torch_cpu_latency_ms": 1.8460499995853752,
+    "peak_mem_mb": 10.022912,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 75.58,
+    "fitness": 76.79278148160786,
+    "train_time_s": 49.88949704170227
+  },
+  {
+    "id": 85,
+    "iteration": 52,
+    "phase": "evolve",
+    "parent_id": 69,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x64k7mbconv-silu|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 175578,
+    "params_m": 0.175578,
+    "state_dict_mb": 0.759831,
+    "onnx_size_mb": 0.697111,
+    "ort_latency_ms": 0.7106499979272485,
+    "ort_latency_p90_ms": 0.7696800283156335,
+    "torch_cpu_latency_ms": 1.5562999760732055,
+    "peak_mem_mb": 9.437184,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 79.94,
+    "fitness": 81.75177839907222,
+    "train_time_s": 36.01560854911804
+  },
+  {
+    "id": 86,
+    "iteration": 53,
+    "phase": "evolve",
+    "parent_id": 80,
+    "summary": "r24-s32|2x16k5mbconv-relu|3x96k7mbconv-hswish|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 16,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 265034,
+    "params_m": 0.265034,
+    "state_dict_mb": 1.121623,
+    "onnx_size_mb": 1.05152,
+    "ort_latency_ms": 0.8324499940499663,
+    "ort_latency_p90_ms": 0.8822399657219648,
+    "torch_cpu_latency_ms": 1.585599995451048,
+    "peak_mem_mb": 10.227712,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.54,
+    "fitness": 79.93976920508734,
+    "train_time_s": 31.055474996566772
+  },
+  {
+    "id": 87,
+    "iteration": 54,
+    "phase": "evolve",
+    "parent_id": 85,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x64k7mbconv-silu|1x96k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 165274,
+    "params_m": 0.165274,
+    "state_dict_mb": 0.718359,
+    "onnx_size_mb": 0.656502,
+    "ort_latency_ms": 0.7018000178504735,
+    "ort_latency_p90_ms": 0.7297999633010477,
+    "torch_cpu_latency_ms": 1.492450013756752,
+    "peak_mem_mb": 9.248768,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.5,
+    "fitness": 80.30932825328134,
+    "train_time_s": 32.73622274398804
+  },
+  {
+    "id": 88,
+    "iteration": 55,
+    "phase": "evolve",
+    "parent_id": 85,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x64k7mbconv-silu|1x128k5dwsep-relu|3x160k7dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 160,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 9,
+    "params": 279258,
+    "params_m": 0.279258,
+    "state_dict_mb": 1.194063,
+    "onnx_size_mb": 1.108696,
+    "ort_latency_ms": 0.7042000070214272,
+    "ort_latency_p90_ms": 0.727800012100488,
+    "torch_cpu_latency_ms": 1.9013499841094017,
+    "peak_mem_mb": 9.207808,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.28,
+    "fitness": 80.07605588749122,
+    "train_time_s": 36.11571979522705
+  },
+  {
+    "id": 89,
+    "iteration": 56,
+    "phase": "evolve",
+    "parent_id": 80,
+    "summary": "r24-s32|2x32k5mbconv-relu|1x96k7mbconv-hswish|1x128k5dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 32,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 96,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "hswish"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 5,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 4,
+    "params": 99210,
+    "params_m": 0.09921,
+    "state_dict_mb": 0.434867,
+    "onnx_size_mb": 0.394732,
+    "ort_latency_ms": 0.4524000105448067,
+    "ort_latency_p90_ms": 0.46977002057246864,
+    "torch_cpu_latency_ms": 1.0682500142138451,
+    "peak_mem_mb": 8.699904,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 74.82,
+    "fitness": 77.55945763503419,
+    "train_time_s": 33.15589213371277
+  },
+  {
+    "id": 90,
+    "iteration": 57,
+    "phase": "evolve",
+    "parent_id": 85,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x64k7mbconv-silu|1x128k7dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 177114,
+    "params_m": 0.177114,
+    "state_dict_mb": 0.765975,
+    "onnx_size_mb": 0.703255,
+    "ort_latency_ms": 0.6966000073589385,
+    "ort_latency_p90_ms": 0.7240899838507175,
+    "torch_cpu_latency_ms": 1.5017499681562185,
+    "peak_mem_mb": 9.515008,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.54,
+    "fitness": 80.36817943783427,
+    "train_time_s": 43.54377865791321
+  },
+  {
+    "id": 91,
+    "iteration": 58,
+    "phase": "evolve",
+    "parent_id": 90,
+    "summary": "r24-s16|2x16k5mbconv-relu|3x64k7mbconv-silu|1x128k7dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 16,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 3,
+    "total_blocks": 6,
+    "params": 157466,
+    "params_m": 0.157466,
+    "state_dict_mb": 0.685079,
+    "onnx_size_mb": 0.626985,
+    "ort_latency_ms": 0.5237499717622995,
+    "ort_latency_p90_ms": 0.553739967290312,
+    "torch_cpu_latency_ms": 1.3386000064201653,
+    "peak_mem_mb": 9.060352,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 77.56,
+    "fitness": 80.04732397521362,
+    "train_time_s": 30.84050488471985
+  },
+  {
+    "id": 92,
+    "iteration": 59,
+    "phase": "evolve",
+    "parent_id": 90,
+    "summary": "r24-s16|2x32k5mbconv-relu|3x64k7mbconv-silu|1x128k7dwsep-relu|1x192k3dwsep-relu",
+    "arch": {
+      "resolution": 24,
+      "stem_channels": 16,
+      "stages": [
+        {
+          "depth": 2,
+          "channels": 32,
+          "kernel": 5,
+          "block": "mbconv",
+          "activation": "relu"
+        },
+        {
+          "depth": 3,
+          "channels": 64,
+          "kernel": 7,
+          "block": "mbconv",
+          "activation": "silu"
+        },
+        {
+          "depth": 1,
+          "channels": 128,
+          "kernel": 7,
+          "block": "dwsep",
+          "activation": "relu"
+        },
+        {
+          "depth": 1,
+          "channels": 192,
+          "kernel": 3,
+          "block": "dwsep",
+          "activation": "relu"
+        }
+      ]
+    },
+    "resolution": 24,
+    "num_stages": 4,
+    "total_blocks": 7,
+    "params": 219866,
+    "params_m": 0.219866,
+    "state_dict_mb": 0.943551,
+    "onnx_size_mb": 0.873561,
+    "ort_latency_ms": 0.6203499797265977,
+    "ort_latency_p90_ms": 0.7138300163205713,
+    "torch_cpu_latency_ms": 1.65940000442788,
+    "peak_mem_mb": 10.268672,
+    "peak_mem_method": "peak_wset",
+    "violations": "",
+    "status": "trained",
+    "val_top1": 78.18,
+    "fitness": 80.27850953400186,
+    "train_time_s": 47.6808180809021
+  }
+]

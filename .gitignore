@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Datasets (CIFAR-10/100 are downloaded automatically)
+data/
+
+# Large model artifacts
+outputs/checkpoints/
+outputs/onnx/
+*.pth
+*.pt
+*.onnx
+
+# Submission archives
+*.zip
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

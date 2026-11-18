@@ -1,0 +1,8 @@
+{
+  "summary": "r24-s32|2x32k5mbconv-relu|3x96k7mbconv-silu|1x128k5dwsep-relu",
+  "test_top1": 92.42,
+  "epochs": 100,
+  "train_time_min": 18.72015113433202,
+  "checkpoint": "outputs/nas\\nas_best.pth",
+  "params_m": 0.287754
+}

@@ -1,0 +1,11 @@
+# install torch/torchvision with the CUDA build matching your GPU first (see README)
+torch>=2.4
+torchvision>=0.19
+onnx>=1.16
+onnxscript>=0.1
+onnxruntime>=1.18
+numpy
+pandas
+matplotlib
+psutil
+Pillow

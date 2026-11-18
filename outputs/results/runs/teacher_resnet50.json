@@ -1,0 +1,16 @@
+{
+  "run": "teacher_resnet50",
+  "arch": "resnet50",
+  "dataset": "cifar100",
+  "mode": "teacher",
+  "epochs": 60,
+  "lr": 0.05,
+  "wd": 0.0005,
+  "pretrained_init": true,
+  "best_top1": 83.08,
+  "best_epoch": 53,
+  "final_top1": 83.05,
+  "final_top5": 96.53,
+  "train_time_min": 46.80874657233556,
+  "checkpoint": "outputs\\checkpoints\\teacher_resnet50.pth"
+}

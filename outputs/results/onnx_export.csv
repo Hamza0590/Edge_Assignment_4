@@ -1,0 +1,9 @@
+model,onnx_path,input_shape,onnx_size_mb,max_abs_diff,same_argmax,verified
+teacher_resnet50,outputs\onnx\teacher_resnet50.onnx,Nx3x32x32,94.739,3.81e-06,True,True
+baseline_mobilenetv2,outputs\onnx\baseline_mobilenetv2.onnx,Nx3x32x32,9.383,5.72e-06,True,True
+baseline_squeezenet,outputs\onnx\baseline_squeezenet.onnx,Nx3x32x32,3.111,4.05e-06,True,True
+baseline_efficientnet_lite0,outputs\onnx\baseline_efficientnet_lite0.onnx,Nx3x32x32,13.953,4.77e-06,True,True
+kd_mobilenetv2,outputs\onnx\kd_mobilenetv2.onnx,Nx3x32x32,9.383,1.14e-05,True,True
+kd_squeezenet,outputs\onnx\kd_squeezenet.onnx,Nx3x32x32,3.111,6.68e-06,True,True
+kd_efficientnet_lite0,outputs\onnx\kd_efficientnet_lite0.onnx,Nx3x32x32,13.953,3.81e-06,True,True
+nas_best,outputs\onnx\nas_best.onnx,Nx3x24x24,1.15,6.68e-06,True,True

@@ -1,0 +1,8 @@
+teacher_resnet50           -> outputs\onnx\teacher_resnet50.onnx       94.739 MB  max|diff|=3.81e-06  verified=True
+baseline_mobilenetv2       -> outputs\onnx\baseline_mobilenetv2.onnx    9.383 MB  max|diff|=5.72e-06  verified=True
+baseline_squeezenet        -> outputs\onnx\baseline_squeezenet.onnx     3.111 MB  max|diff|=4.05e-06  verified=True
+baseline_efficientnet_lite0 -> outputs\onnx\baseline_efficientnet_lite0.onnx   13.953 MB  max|diff|=4.77e-06  verified=True
+kd_mobilenetv2             -> outputs\onnx\kd_mobilenetv2.onnx          9.383 MB  max|diff|=1.14e-05  verified=True
+kd_squeezenet              -> outputs\onnx\kd_squeezenet.onnx           3.111 MB  max|diff|=6.68e-06  verified=True
+kd_efficientnet_lite0      -> outputs\onnx\kd_efficientnet_lite0.onnx   13.953 MB  max|diff|=3.81e-06  verified=True
+nas_best                   -> outputs\onnx\nas_best.onnx                1.150 MB  max|diff|=6.68e-06  verified=True

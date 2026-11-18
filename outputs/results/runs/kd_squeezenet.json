@@ -1,0 +1,19 @@
+{
+  "run": "kd_squeezenet",
+  "arch": "squeezenet",
+  "dataset": "cifar100",
+  "mode": "kd",
+  "epochs": 100,
+  "lr": 0.1,
+  "wd": 0.0005,
+  "alpha": 0.9,
+  "T": 4.0,
+  "beta": 1.0,
+  "teacher_top1": 83.05,
+  "best_top1": 76.05,
+  "best_epoch": 99,
+  "final_top1": 76.03,
+  "final_top5": 94.47,
+  "train_time_min": 40.18842898607254,
+  "checkpoint": "outputs\\checkpoints\\kd_squeezenet.pth"
+}

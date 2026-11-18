@@ -1,0 +1,15 @@
+{
+  "run": "baseline_squeezenet",
+  "arch": "squeezenet",
+  "dataset": "cifar100",
+  "mode": "baseline",
+  "epochs": 100,
+  "lr": 0.1,
+  "wd": 0.0005,
+  "best_top1": 72.97,
+  "best_epoch": 94,
+  "final_top1": 72.8,
+  "final_top5": 93.17,
+  "train_time_min": 19.028342461586,
+  "checkpoint": "outputs\\checkpoints\\baseline_squeezenet.pth"
+}

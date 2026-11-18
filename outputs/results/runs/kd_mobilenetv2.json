@@ -1,0 +1,19 @@
+{
+  "run": "kd_mobilenetv2",
+  "arch": "mobilenetv2",
+  "dataset": "cifar100",
+  "mode": "kd",
+  "epochs": 100,
+  "lr": 0.1,
+  "wd": 0.0005,
+  "alpha": 0.9,
+  "T": 4.0,
+  "beta": 1.0,
+  "teacher_top1": 83.05,
+  "best_top1": 78.8,
+  "best_epoch": 94,
+  "final_top1": 78.73,
+  "final_top5": 95.54,
+  "train_time_min": 58.54932276805242,
+  "checkpoint": "outputs\\checkpoints\\kd_mobilenetv2.pth"
+}

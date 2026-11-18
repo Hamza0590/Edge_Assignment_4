@@ -1,0 +1,4 @@
+student,kd_softonly_top1,kd_softonly_top5
+mobilenetv2,78.47,95.31
+squeezenet,75.86,94.34
+efficientnet_lite0,79.08,95.81

@@ -1,0 +1,8 @@
+{
+  "platform": "Windows-11-10.0.26300-SP0",
+  "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+  "cpu_count": 16,
+  "torch": "2.10.0+cu128",
+  "onnxruntime": "1.31.0",
+  "gpu": "NVIDIA GeForce RTX 5060 Ti"
+}

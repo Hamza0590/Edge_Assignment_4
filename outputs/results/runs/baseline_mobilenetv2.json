@@ -1,0 +1,15 @@
+{
+  "run": "baseline_mobilenetv2",
+  "arch": "mobilenetv2",
+  "dataset": "cifar100",
+  "mode": "baseline",
+  "epochs": 100,
+  "lr": 0.1,
+  "wd": 0.0005,
+  "best_top1": 75.48,
+  "best_epoch": 95,
+  "final_top1": 75.32,
+  "final_top5": 94.39,
+  "train_time_min": 46.77410006920497,
+  "checkpoint": "outputs\\checkpoints\\baseline_mobilenetv2.pth"
+}
