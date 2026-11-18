@@ -13,13 +13,6 @@ env/
 # Datasets (CIFAR-10/100 are downloaded automatically)
 data/
 
-# Large model artifacts
-outputs/checkpoints/
-outputs/onnx/
-*.pth
-*.pt
-*.onnx
-
 # Submission archives
 *.zip
 

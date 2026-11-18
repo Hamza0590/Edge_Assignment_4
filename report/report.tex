@@ -1,0 +1,229 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{figures/}}
+\setlist{nosep}
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\req}[1]{\noindent\colorbox{gray!12}{\parbox{\dimexpr\linewidth-2\fboxsep}{\textbf{Asked:} #1}}\par\smallskip}
+\newcommand{\shot}[2]{\begin{figure}[H]\centering\includegraphics[width=#1\linewidth]{#2}\end{figure}}
+
+\title{\textbf{Assignment 4 -- Technical Report}\\[2pt]
+\large Knowledge Distillation and Hardware-Aware NAS for Edge Devices}
+\author{Edge Computing \& Intelligent Systems}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+\begin{center}\small
+Hardware: AMD Ryzen 7 7700 CPU, NVIDIA RTX 5060 Ti 16\,GB, Windows 11 \quad
+Software: Python 3.13, PyTorch 2.10, ONNX Runtime 1.31
+\end{center}
+
+%======================================================================
+\section*{Question 1: Knowledge Distillation (50 marks)}
+%======================================================================
+
+\subsection*{1.1 Teacher: ResNet-50 on CIFAR-100}
+\req{Implement and train a teacher model using ResNet-50 on CIFAR-100.}
+\begin{itemize}
+  \item \code{q1\_kd/models/teacher\_resnet50.py}, \code{q1\_kd/train\_teacher.py}.
+  \item ResNet-50 (ImageNet init). The 7$\times$7/s2 stem and max-pool are replaced by a 3$\times$3/s1 conv for 32$\times$32 inputs.
+  \item SGD Nesterov, lr 0.05, cosine decay, batch 128, 60 epochs.
+  \item \textbf{Result: 82.93\% top-1, 96.58\% top-5.}
+\end{itemize}
+\shot{0.85}{shot_teacher.png}
+
+\subsection*{1.2 Student architectures}
+\req{Implement MobileNetV2, SqueezeNet and EfficientNet-Lite0.}
+All three are written from scratch in \code{q1\_kd/models/} and adapted to 32$\times$32 inputs.
+\begin{table}[H]\centering\small
+\begin{tabular}{llr}
+\toprule
+Student & Building block & Params \\
+\midrule
+MobileNetV2        & Inverted residual (expand $\to$ depthwise $\to$ linear projection) & 2.35\,M \\
+SqueezeNet (v1.1)  & Fire module (1$\times$1 squeeze $\to$ 1$\times$1 + 3$\times$3 expand), BN added & 0.78\,M \\
+EfficientNet-Lite0 & MBConv, no SE, ReLU6 & 3.50\,M \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{1.3 Knowledge distillation framework}
+\req{Soft-target KD, temperature softmax, combined hard + soft loss, feature-based distillation.}
+Implemented in \code{q1\_kd/kd/distiller.py}:
+\[
+\mathcal{L} = (1-\alpha)\,\mathrm{CE}(z_s,y)
+ + \alpha\,T^2\,\mathrm{KL}\!\left(\sigma(z_t/T)\,\|\,\sigma(z_s/T)\right)
+ + \beta\,\big\| n(r(f_s)) - n(f_t) \big\|^2
+\]
+\begin{itemize}
+  \item \textbf{Soft targets:} frozen teacher logits on the same batch (\code{soft\_target\_loss}).
+  \item \textbf{Temperature softmax:} $T=4$, scaled by $T^2$ (\code{temperature\_softmax}).
+  \item \textbf{Hard + soft:} $\alpha = 0.9$.
+  \item \textbf{Feature-based:} FitNets hint. A 1$\times$1 conv regressor $r$ maps the student's last feature map to the teacher's \code{layer4} (2048 ch). $n$ is L2 normalisation (\code{FeatureHint}).
+\end{itemize}
+
+\subsection*{1.4 Distilled students}
+\req{Train all three students with the distillation framework.}
+\code{q1\_kd/train\_kd.py}: SGD lr 0.1, cosine, batch 128, 100 epochs, seed 0.
+\shot{0.85}{shot_kd.png}
+
+\subsection*{1.5 Baseline students (no KD)}
+\req{Separate baseline training pipeline for the three students.}
+\code{q1\_kd/train\_baseline.py}: same settings as KD, cross-entropy loss only.
+\shot{0.85}{shot_baseline.png}
+
+\paragraph{Results (CIFAR-100 test, top-1 \%).}
+\begin{table}[H]\centering\small
+\begin{tabular}{lcccc}
+\toprule
+Student & Baseline & KD (soft only) & \textbf{KD (soft + feature)} & Gain \\
+\midrule
+MobileNetV2        & 75.27 & 78.47 & \textbf{78.79} & +3.52 \\
+SqueezeNet         & 72.88 & 75.86 & \textbf{76.00} & +3.12 \\
+EfficientNet-Lite0 & 76.12 & 79.08 & \textbf{79.65} & +3.53 \\
+\midrule
+Teacher ResNet-50  & \multicolumn{4}{c}{82.93} \\
+\bottomrule
+\end{tabular}
+\end{table}
+KD improves every student by 3.1--3.5 points. Soft targets give most of the gain, and the feature hint adds +0.1 to +0.6.
+\shot{0.8}{q1_kd_vs_baseline.png}
+\shot{0.95}{q1_training_curves.png}
+
+\subsection*{1.6 Unified inference pipeline}
+\req{A unified inference pipeline supporting all trained student models.}
+\begin{itemize}
+  \item \code{inference/model\_zoo.py} registers all models (teacher, 3 baselines, 3 KD, NAS).
+  \item \code{inference/pipeline.py} (\code{EdgeClassifier}): one API, PyTorch or ONNX backend, preprocessing chosen automatically.
+  \item \code{inference/predict.py}: CLI, e.g.\ \code{--model all-students --backend onnx}.
+\end{itemize}
+\shot{0.85}{shot_inference.png}
+
+\subsection*{1.7 ONNX export and CPU inference}
+\req{Export students to ONNX and run CPU inference with ONNX Runtime.}
+\begin{itemize}
+  \item \code{deploy/export\_onnx.py}: opset 17, dynamic batch. Each export is verified (max $|\Delta\text{logit}| \le 1.1\times10^{-5}$, same predictions).
+  \item \code{deploy/onnx\_infer.py}: PyTorch-free CPU inference (numpy + onnxruntime).
+\end{itemize}
+\begin{table}[H]\centering\small
+\begin{tabular}{lccc}
+\toprule
+ONNX model & ORT CPU acc. & PyTorch acc. & Throughput (img/s) \\
+\midrule
+kd\_mobilenetv2        & 78.76 & 78.79 & 1192 \\
+kd\_squeezenet         & 76.01 & 76.00 & 1504 \\
+kd\_efficientnet\_lite0 & 79.64 & 79.65 & 1107 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\shot{0.85}{shot_onnx_export.png}
+\shot{0.85}{shot_onnx_infer.png}
+
+%======================================================================
+\section*{Question 2: Hardware-Aware NAS (50 marks)}
+%======================================================================
+
+\subsection*{2.1 Search space}
+\req{Variable depth, channels, kernel sizes, depthwise-separable blocks, activations, input resolution.}
+\code{q2\_nas/search\_space.py}, about $3.1\times10^{11}$ architectures.
+\begin{table}[H]\centering\small
+\begin{tabular}{ll}
+\toprule
+Dimension & Choices \\
+\midrule
+Input resolution & 24, 32, 40 px \\
+Depth            & 2--4 stages $\times$ 1--3 blocks \\
+Channels         & stem \{16,24,32\}; stage widths 16--256 \\
+Kernel size      & 3, 5, 7 \\
+Block type       & standard conv, \textbf{depthwise-separable}, MBConv \\
+Activation       & ReLU, ReLU6, Hard-Swish, SiLU \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{2.2 Architecture generator}
+\req{Construct networks from sampled configurations.}
+\code{q2\_nas/generator.py}: \code{build\_from\_config(arch)} $\to$ stem $\to$ stages of Conv / DWSep / MBConv blocks $\to$ 1$\times$1 head $\to$ GAP $\to$ linear. The config is saved in the checkpoint so the network can be rebuilt.
+
+\subsection*{2.3 Search strategy}
+\req{Evolutionary search or Bayesian optimisation (Optuna).}
+Regularized (aging) evolution in \code{q2\_nas/search.py}: population 16, tournament 5, one-decision mutation, oldest removed, 60 trained candidates.
+\shot{0.85}{shot_nas_search.png}
+\shot{0.9}{q2_nas_progress.png}
+
+\subsection*{2.4 Training and validation on CIFAR-10}
+\req{Automated training and validation for candidates.}
+\code{q2\_nas/train\_utils.py}: CIFAR-10 split 45k/5k, 6 proxy epochs per candidate, scored on the 5k validation split.
+
+\subsection*{2.5 \& 2.6 Hardware-aware selection and constraints}
+\req{Measure CPU latency, storage size and peak memory; reject constraint violations.}
+\code{q2\_nas/hardware.py}, \code{common/ort\_probe.py}. Each candidate is exported to ONNX and measured \emph{before} training.
+\begin{table}[H]\centering\small
+\begin{tabular}{lll}
+\toprule
+Metric & Measurement & Limit \\
+\midrule
+CPU latency  & ONNX Runtime, batch 1, 1 thread, median of 50 & $\le$ 1.5 ms \\
+Storage size & \code{.onnx} file size & $\le$ 2.0 MB \\
+Peak memory  & OS peak working set in an isolated process & $\le$ 15 MB \\
+\bottomrule
+\end{tabular}
+\end{table}
+Fitness: $\text{val\_acc}\times(\text{latency}/1.5\,\text{ms})^{-0.03}$. Of 93 sampled architectures, \textbf{26 were rejected} by the constraints.
+\shot{0.9}{q2_nas_hardware.png}
+
+\subsection*{2.7 Best architecture, trained from scratch}
+\req{Save the best architecture automatically and train it from scratch.}
+Saved to \code{outputs/nas/best\_arch.json}; \code{q2\_nas/train\_best.py} retrains it for 100 epochs on all 50k images.
+\begin{table}[H]\centering\small
+\begin{tabular}{ll}
+\toprule
+Input        & 24$\times$24 \\
+Stages       & 2$\times$MBConv(32,k5,ReLU), 3$\times$MBConv(96,k7,SiLU), 1$\times$DWSep(128,k5,ReLU) \\
+Parameters   & 0.288 M \\
+ONNX size    & 1.15 MB \\
+CPU latency  & 0.89 ms (ORT, 1 thread) \\
+Peak memory  & 9.0 MB \\
+\textbf{CIFAR-10 test acc.} & \textbf{92.49\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+\shot{0.8}{q2_nas_best_training.png}
+
+\subsection*{2.8 ONNX deployment}
+\req{Export the selected architecture to ONNX and run it with ONNX Runtime.}
+Exported by \code{deploy/export\_onnx.py} (max $|\Delta| = 6.7\times10^{-6}$). ONNX Runtime accuracy: \textbf{92.48\%} (see the \code{nas\_best} row in the Q1.7 screenshot).
+
+%======================================================================
+\section*{Benchmark}
+%======================================================================
+\code{benchmark/run\_benchmark.py} $\to$ \code{outputs/results/benchmark.csv}. Batch 1, median of 100 runs.
+\begin{table}[H]\centering\small
+\begin{tabular}{lrrrrr}
+\toprule
+Model & Params (M) & ONNX (MB) & Top-1 (\%) & ORT 1T (ms) & Peak mem (MB) \\
+\midrule
+teacher\_resnet50          & 23.705 & 94.74 & 82.93 & 19.11 & 222.2 \\
+baseline\_mobilenetv2      & 2.352  & 9.38  & 75.27 & 1.79  & 32.2 \\
+baseline\_squeezenet       & 0.777  & 3.11  & 72.88 & 1.05  & 15.2 \\
+baseline\_efficientnet\_lite0 & 3.499 & 13.95 & 76.12 & 2.03 & 42.1 \\
+kd\_mobilenetv2            & 2.352  & 9.38  & 78.79 & 1.56  & 32.2 \\
+kd\_squeezenet             & 0.777  & 3.11  & 76.00 & 1.05  & 14.8 \\
+kd\_efficientnet\_lite0    & 3.499  & 13.95 & 79.65 & 2.01  & 42.2 \\
+nas\_best (CIFAR-10)       & 0.288  & 1.15  & 92.49 & 0.89  & 9.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+\shot{0.85}{shot_benchmark.png}
+\shot{0.8}{q1_accuracy_vs_latency.png}
+
+\end{document}
